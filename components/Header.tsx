@@ -6,6 +6,10 @@ import whiteLogo from '../public/MJ-Logo-Design-01-White-BG.png';
 import blackLogo from '../public/MJ-Logo-Design-01.svg';
 import { useTheme, useThemeUpdate } from './ThemeProvider';
 
+import { Button } from 'react-bootstrap';
+
+import { useColorMode, Box, Container } from '@chakra-ui/react';
+
 const Header = ({ isIntersecting, links }) => {
 	const toggleTheme = useThemeUpdate();
 	const theme = useTheme();
@@ -24,21 +28,23 @@ const Header = ({ isIntersecting, links }) => {
 		}
 	};
 
+	const { colorMode, toggleColorMode } = useColorMode();
+
 	return (
-		<header className={`page-header ${!isIntersecting && 'intersected'}`} id='page-header'>
-			<nav className='navbar navbar-expand-lg'>
-				<div className='container-fluid'>
+		<Box as='header' className={`page-header ${!isIntersecting && 'intersected'}`} id='page-header'>
+			<Box as='nav' className='navbar navbar-expand-lg'>
+				<Container>
 					<Image className='navbar-brand' src={!isIntersecting ? blackLogo : whiteLogo} width={50} height={50} alt='Personal logo' />
 					<div className='theme-switch-wrapper'>
 						<label className='theme-switch'>
-							<input type='checkbox' id='toggle-switch' onChange={switchTheme} />
+							<input type='checkbox' id='toggle-switch' onChange={toggleColorMode} />
 							<div className='slider round' />
 						</label>
 					</div>
 
-					<button
+					<Button
+          variant='ghost'
 						className='navbar-toggler'
-						type='button'
 						data-bs-toggle='collapse'
 						data-bs-target='#navbarContent'
 						aria-controls='navbarContent'
@@ -52,7 +58,7 @@ const Header = ({ isIntersecting, links }) => {
 							<span />
 							<span />
 						</div>
-					</button>
+					</Button>
 
 					<CSSTransition in={isNavOpen} timeout={200} classNames='navbar'>
 						<div className={`collapse ${isNavOpen && 'show'} navbar-collapse`} id='navbarContent'>
@@ -67,9 +73,9 @@ const Header = ({ isIntersecting, links }) => {
 							</ul>
 						</div>
 					</CSSTransition>
-				</div>
-			</nav>
-		</header>
+				</Container>
+			</Box>
+		</Box>
 	);
 };
 

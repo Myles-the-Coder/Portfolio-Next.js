@@ -8,7 +8,8 @@ import darkModeBG from 'public/wickedbackground-dark_mode.svg';
 import { useTheme } from 'components/ThemeProvider';
 import SvgWave from 'components/SvgWave';
 import { Arrow } from 'components/Arrow';
-import { typewriterWords } from 'helpers/constants';
+import { typewriterWords } from 'util/constants';
+import { Box, Heading, Button, Text } from '@chakra-ui/react';
 
 const Home = ({ containerRef }) => {
 	const theme = useTheme();
@@ -18,27 +19,27 @@ const Home = ({ containerRef }) => {
 	};
 
 	return (
-		<section id='home' ref={containerRef} style={{ zIndex: '0' }}>
+		<Box as='section' id='home' ref={containerRef} bg='green.500'>
 			<Head>
 				<title>Myles Jefferson</title>
 			</Head>
-			<Image src={theme === 'Light' ? lightModeBG : darkModeBG} layout='fill' objectFit='cover' objectPosition='center' alt='Background Image' />
-			<h1 id='profile-h1' style={zIndex}>
-				Hello, I am Myles Jefferson
-			</h1>
-			<h2 style={zIndex}>
+			<Heading fontSize={'2xl'}>Hello, I am Myles Jefferson</Heading>
+			<Text>
 				A <span className='web-text'>&lt;Full-Stack Developer /&gt;</span> experienced with{' '}
-				<span >
+				<span>
 					<Typewriter words={typewriterWords} cursor cursorStyle='_' />
 				</span>
-			</h2>
-			<a href='https://github.com/Myles-the-Coder' target='_blank' className='btn mt-4' rel='noreferrer' style={zIndex}>
+			</Text>
+			<Button as='a' href='https://github.com/Myles-the-Coder' target='_blank' className='btn mt-4' rel='noreferrer'>
+        Explore my code on GitHub
+      </Button>
+			{/* <a href='https://github.com/Myles-the-Coder' target='_blank' className='btn mt-4' rel='noreferrer' style={zIndex}>
 				Explore my code on GitHub
-			</a>
+			</a> */}
 			<Arrow />
-			<SvgWave />
-		</section>
+			{/* <SvgWave /> */}
+		</Box>
 	);
-}
+};
 
 export default Home;

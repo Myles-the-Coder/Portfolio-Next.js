@@ -9,19 +9,19 @@ import About from './About';
 import Contact from './Contact';
 import { useTheme, useThemeUpdate } from 'components/ThemeProvider';
 import ScrollBtn from 'components/ScrollBtn';
-import { links } from 'helpers/constants';
+import { links } from 'util/constants';
 
 const Index = () => {
-	const theme = useTheme();
-	const toggleTheme = useThemeUpdate();
+	// const theme = useTheme();
+	// const toggleTheme = useThemeUpdate();
 	const [isIntersecting, setIsIntersecting] = useState(false);
 	const containerRef = useRef(null);
 
 	useEffect(() => {
 		AOS.init();
 
-		const currentTheme = localStorage.getItem('theme');
-		!currentTheme && theme;
+		// const currentTheme = localStorage.getItem('theme');
+		// !currentTheme && theme;
 
 		let observer = new IntersectionObserver(
 			entries => {
@@ -34,10 +34,10 @@ const Index = () => {
 		const currentRef = containerRef.current;
 		observer.observe(currentRef);
 
-		if (currentTheme) {
-			document.documentElement.setAttribute('data-theme', currentTheme);
-			toggleTheme(currentTheme);
-		}
+		// if (currentTheme) {
+		// 	document.documentElement.setAttribute('data-theme', currentTheme);
+		// 	toggleTheme(currentTheme);
+		// }
 
 		return () => currentRef && observer.unobserve(currentRef);
 	});

@@ -1,5 +1,6 @@
 import React from 'react'
 
+
 const SvgWave = () => (
     <div className='wave'>
     <svg

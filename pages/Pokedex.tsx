@@ -5,7 +5,7 @@ import Footer from '../components/Footer';
 import Image from 'next/image';
 import Head from 'next/head';
 import { Arrow } from 'components/Arrow';
-import { caseStudyLinks } from 'helpers/constants';
+import { caseStudyLinks } from 'util/constants';
 
 export default function Pokedex() {
 	return (
