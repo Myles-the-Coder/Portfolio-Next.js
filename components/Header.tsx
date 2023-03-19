@@ -8,7 +8,7 @@ import { useTheme, useThemeUpdate } from './ThemeProvider';
 
 import { Button } from 'react-bootstrap';
 
-import { useColorMode, Box, Container } from '@chakra-ui/react';
+import { useColorMode, Box, Container, UnorderedList, List } from '@chakra-ui/react';
 
 const Header = ({ isIntersecting, links }) => {
 	const toggleTheme = useThemeUpdate();
@@ -33,7 +33,7 @@ const Header = ({ isIntersecting, links }) => {
 	return (
 		<Box as='header' className={`page-header ${!isIntersecting && 'intersected'}`} id='page-header'>
 			<Box as='nav' className='navbar navbar-expand-lg'>
-				<Container>
+				{/* <Box> */}
 					<Image className='navbar-brand' src={!isIntersecting ? blackLogo : whiteLogo} width={50} height={50} alt='Personal logo' />
 					<div className='theme-switch-wrapper'>
 						<label className='theme-switch'>
@@ -62,20 +62,20 @@ const Header = ({ isIntersecting, links }) => {
 
 					<CSSTransition in={isNavOpen} timeout={200} classNames='navbar'>
 						<div className={`collapse ${isNavOpen && 'show'} navbar-collapse`} id='navbarContent'>
-							<ul className='navbar-nav' id='navbar-nav'>
+							<UnorderedList className='navbar-nav' id='navbar-nav'>
 								{links.map(({ name, href }) => (
-									<li className='nav-item' key={name}>
+									<List className='nav-item' key={name}>
 										<a className='nav-link' href={href} onClick={handleNavCollapse}>
 											{name}
 										</a>
-									</li>
+									</List>
 								))}
-							</ul>
+							</UnorderedList>
 						</div>
 					</CSSTransition>
-				</Container>
+				</Box>
 			</Box>
-		</Box>
+		// </Box>
 	);
 };
 

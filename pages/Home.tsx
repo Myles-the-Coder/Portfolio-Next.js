@@ -9,7 +9,7 @@ import { useTheme } from 'components/ThemeProvider';
 import SvgWave from 'components/SvgWave';
 import { Arrow } from 'components/Arrow';
 import { typewriterWords } from 'util/constants';
-import { Box, Heading, Button, Text } from '@chakra-ui/react';
+import { Box, Heading, Button, Text, Flex } from '@chakra-ui/react';
 
 const Home = ({ containerRef }) => {
 	const theme = useTheme();
@@ -19,18 +19,20 @@ const Home = ({ containerRef }) => {
 	};
 
 	return (
-		<Box as='section' id='home' ref={containerRef} bg='green.500'>
+		<Box id='home' ref={containerRef} bg='green.500' h='100vh'>
 			<Head>
 				<title>Myles Jefferson</title>
 			</Head>
 			<Heading fontSize={'2xl'}>Hello, I am Myles Jefferson</Heading>
+      <Flex justify='center' align='center' textAlign='center'>
 			<Text>
-				A <span className='web-text'>&lt;Full-Stack Developer /&gt;</span> experienced with{' '}
+				A <Text as='span' fontWeight='bold'>&lt;Full-Stack Developer /&gt;</Text> experienced with{' '}
 				<span>
 					<Typewriter words={typewriterWords} cursor cursorStyle='_' />
 				</span>
 			</Text>
-			<Button as='a' href='https://github.com/Myles-the-Coder' target='_blank' className='btn mt-4' rel='noreferrer'>
+      </Flex>
+			<Button as='a' href='https://github.com/Myles-the-Coder' target='_blank' rel='noreferrer'>
         Explore my code on GitHub
       </Button>
 			{/* <a href='https://github.com/Myles-the-Coder' target='_blank' className='btn mt-4' rel='noreferrer' style={zIndex}>
